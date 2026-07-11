@@ -12,3 +12,4 @@ osx.kivy_version = 1.9.1
 fullscreen = 0
 android.permissions = INTERNET
 android.archs = arm64-v8a, armeabi-v7a
+android.accept_sdk_license = True
