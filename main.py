@@ -1,16 +1,29 @@
-import cv2
-import numpy as np
+cat << 'EOF' > ~/AutoBrainApp/injector.sh
+#!/bin/bash
+echo "========================================="
+echo " 🧠 AUTO BRAIN - DIRECT INJECTION ACTIVE"
+echo "========================================="
+cd ~/AutoBrainApp || exit
 
-def scan_document(image_path):
-    # 1. Load image and calculate ratio
-    img = cv2.imread(image_path)
-    # ... standard OpenCV doc scan logic ...
-from kivy.app import App
-from kivy.uix.label import Label
+echo "📋 PASTE your Gemini Python code below."
+echo "🟢 When finished, press CTRL + D to auto-save and launch!"
+echo "-----------------------------------------"
 
-class AutoBrainApp(App):
-    def build(self):
-        return Label(text='Automated Build Successful!', font_size='24sp')
+# This reads your paste directly into the file without opening an editor
+cat > main.py
 
-if __name__ == '__main__':
-    AutoBrainApp().run()
+echo ""
+echo "-----------------------------------------"
+echo "✅ Code locked in! Packaging for the cloud..."
+git add main.py buildozer.spec
+git commit -m "Auto Brain: Direct Blueprint Update" || echo "No changes."
+
+echo "🚀 Pushing to GitHub Matrix..."
+git push
+
+echo "-----------------------------------------"
+echo "👁️ Waking up the Observer..."
+bash autobrain_fetch.sh
+EOF
+
+chmod +x ~/AutoBrainApp/injector.sh
